@@ -36,6 +36,17 @@ load("@bullseye//:packages.bzl", "bullseye_packages")
 
 bullseye_packages()
 
+# bazel run @noble//:lock
+deb_index(
+    name = "noble",
+    lock = "//examples/apt-ubuntu:noble.lock.json",
+    manifest = "//examples/apt-ubuntu:noble.yaml",
+)
+
+load("@noble//:packages.bzl", "noble_packages")
+
+noble_packages()
+
 # bazel run @apt_security//:lock
 deb_index(
     name = "apt_security",
